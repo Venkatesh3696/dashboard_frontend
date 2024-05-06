@@ -8,7 +8,6 @@ const Statistics = ({ month, monthsData }) => {
     axios
       .get(`http://localhost:5000/transactions/month/${month}`)
       .then((response) => {
-        setStats(response.data.data);
         const finalData = {
           totalSale: response.data.data.totalSale,
           soldCount: response.data.data.sold_count,
