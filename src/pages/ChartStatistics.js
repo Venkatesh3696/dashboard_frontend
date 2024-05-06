@@ -6,7 +6,9 @@ const ChartStatistics = ({ month, monthsData }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/transactions/get-price-ranges`)
+      .get(
+        `https://roxiler-backend-ibde.onrender.com/transactions/get-price-ranges`
+      )
       .then((response) => {
         setData(response.data.data);
       });

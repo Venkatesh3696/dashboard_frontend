@@ -1,5 +1,4 @@
 import "./App.css";
-import MyBarChart from "./components/BarChart";
 import Dashboard from "./pages/Dashboard";
 
 const monthsData = [

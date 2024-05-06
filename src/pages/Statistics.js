@@ -6,7 +6,9 @@ const Statistics = ({ month, monthsData }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/transactions/month/${month}`)
+      .get(
+        `https://roxiler-backend-ibde.onrender.com/transactions/month/${month}`
+      )
       .then((response) => {
         const finalData = {
           totalSale: response.data.data.totalSale,

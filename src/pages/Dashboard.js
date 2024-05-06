@@ -3,8 +3,6 @@ import axios from "axios";
 import Statistics from "./Statistics";
 import ChartStatistics from "./ChartStatistics";
 
-// import Layout from "../components/Layout";
-
 const Dashboard = ({ monthsData }) => {
   const [search, setSearch] = useState("");
   const [month, setMonth] = useState("03");
@@ -26,17 +24,19 @@ const Dashboard = ({ monthsData }) => {
     const page = 1;
 
     setLoading(true);
-    axios.get(`http://localhost:5000/transactions`).then((response) => {
-      setFetchedData(response.data.data);
-      const info = {
-        currentPage: response.data.current_page,
-        perPage: response.data.per_page,
-        lastPage: response.data.last_page,
-      };
+    axios
+      .get(`https://roxiler-backend-ibde.onrender.com/transactions`)
+      .then((response) => {
+        setFetchedData(response.data.data);
+        const info = {
+          currentPage: response.data.current_page,
+          perPage: response.data.per_page,
+          lastPage: response.data.last_page,
+        };
 
-      setPagesData(info);
-      setLoading(false);
-    });
+        setPagesData(info);
+        setLoading(false);
+      });
   };
   console.log("fetchedData == >>", fetchedData);
 
