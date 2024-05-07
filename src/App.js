@@ -16,10 +16,12 @@ const monthsData = [
   { month: "December", monthNumber: "12" },
 ];
 
+const API_URL = "https://roxiler-backend-ibde.onrender.com";
+// const API_URL = "http://localhost:5000";
 function App() {
   return (
     <>
-      <Dashboard monthsData={monthsData} />
+      <Dashboard monthsData={monthsData} API_URL={API_URL} />
     </>
   );
 }

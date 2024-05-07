@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BarChart from "../components/BarChart";
 
-const ChartStatistics = ({ month, monthsData }) => {
+const ChartStatistics = ({ month, monthsData, API_URL }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        `https://roxiler-backend-ibde.onrender.com/transactions/get-price-ranges`
-      )
+      .get(`${API_URL}/transactions/get-price-ranges/${month}`)
       .then((response) => {
+        console.log(response);
         setData(response.data.data);
       });
   }, [month]);
-  console.log(data);
+  console.log("data", data);
 
   return (
     <div>

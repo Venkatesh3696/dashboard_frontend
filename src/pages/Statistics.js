@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const Statistics = ({ month, monthsData }) => {
+const Statistics = ({ month, monthsData, API_URL }) => {
   const [stats, setStats] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://roxiler-backend-ibde.onrender.com/transactions/month/${month}`
-      )
-      .then((response) => {
-        const finalData = {
-          totalSale: response.data.data.totalSale,
-          soldCount: response.data.data.sold_count,
-          unsoldCount: response.data.data.unsold_count,
-        };
-        setStats(finalData);
-      });
+    axios.get(`${API_URL}/transactions/months/${month}`).then((response) => {
+      const finalData = {
+        totalSale: response.data.data.totalSale,
+        soldCount: response.data.data.sold_count,
+        unsoldCount: response.data.data.unsold_count,
+      };
+      setStats(finalData);
+    });
   }, [month]);
   console.log(stats);
   return (
